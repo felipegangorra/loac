@@ -16,8 +16,17 @@ conforme a tabela a seguir.
 
 parameter N = 2; //variavel com dois bits
 
-module irrigacao(input logic [N-1:0] U, output logic [N-1:0] S);
+module irrigacao(input logic [N-1:0] U, output logic [N-1:0] S, output logic A,B,C,D,E,F,G);
   always_comb begin
- 	S <= U;
+    S <= U;	// Saida esperada
+    
+    // Extra: mapeando o resultado dos 7 segmentos esperados (a,b,c,d,e,f,g)
+    case (U)
+      2'b00: begin A <= 0; B <= 0; C <= 0; D <= 0; E <= 0; F <= 0; G <= 0; end	//apagado
+      2'b01: begin A <= 1; B <= 1; C <= 1; D <= 1; E <= 1; F <= 1; G <= 0; end	//zero
+      2'b10: begin A <= 0; B <= 1; C <= 1; D <= 0; E <= 0; F <= 0; G <= 0; end	//um
+      2'b11: begin A <= 1; B <= 1; C <= 0; D <= 1; E <= 1; F <= 0; G <= 1; end	//dois
+    endcase
+    
   end
 endmodule
