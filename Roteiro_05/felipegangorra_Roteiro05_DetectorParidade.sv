@@ -18,7 +18,7 @@ module detector_de_paridade (
   input clk,
   input reset,
   input in_bit,
-  output out_bit
+  output logic out_bit
 );
 
   logic state;
@@ -34,6 +34,6 @@ module detector_de_paridade (
     end
   end
 
-  always_comb out_bit = state;
+  always_comb out_bit <= state;
 
 endmodule
