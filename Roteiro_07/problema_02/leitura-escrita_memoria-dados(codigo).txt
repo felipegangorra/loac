@@ -1,0 +1,21 @@
+.data
+    valor: .word 0xFE
+
+.text
+main:
+
+    # Escrever o valor 0xFE no endereço de memória 0x1000000C
+    lui a0, 0x10000
+    addi a0, a0, 0x0C
+    li a1, 0xFE
+    sw a1, 0(a0)
+
+    # Ler o valor do endereço de memória 0x1000000C e escrever no registrador x10
+    lui a0, 0x10000
+    addi a0, a0, 0x0C
+    lw x10, 0(a0)
+
+    # Terminar o programa
+    li a7, 10
+    ecall
+
